@@ -10,7 +10,7 @@ public class PlayerTest {
 
     @Before
     public void before() {
-        player = new Player();
+        player = new Player("Fred");
         card = new Card(Suit.SPADES, Rank.ACE);
     }
 
@@ -23,5 +23,10 @@ public class PlayerTest {
     public void addingCardToHandIncreasesHandSize(){
         player.addCardToHand(card);
         assertEquals(1, player.getHand().size());
+    }
+
+    @Test
+    public void playerHasName(){
+        assertEquals("Fred", player.getName());
     }
 }

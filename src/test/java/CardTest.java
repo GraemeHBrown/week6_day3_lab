@@ -1,4 +1,4 @@
-import org.junit.Before;
+import org.junit.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -25,8 +25,4 @@ public class CardTest {
         assertEquals(Rank.ACE, card.getRank());
     }
 
-    @Test
-    public void cardRankHasValue(){
-        assertEquals(14, card.getRank().getValue());
-    }
 }
