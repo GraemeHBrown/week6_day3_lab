@@ -1,6 +1,7 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,11 +21,10 @@ public class DeckTest {
         assertEquals(52, deck.cardCount());
     }
 
-
-    @Ignore//can't easily compare
-    public void deckContainsCard(){
-        deck.fillDeck();
-        assertEquals(true, deck.getDeck().equals(card));
+    @Test// shuffle uses random so difficult to test fully.  Test included for documentary purposes.
+    public void shuffleSortsDeckRandomly(){
+        deck.shuffle();
     }
+
 
 }

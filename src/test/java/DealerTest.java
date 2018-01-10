@@ -1,8 +1,16 @@
+import org.junit.*;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
+
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+
+
+//import org.junit.Ignore;
+//import org.junit.Test;
 
 public class DealerTest {
 
@@ -15,17 +23,26 @@ public class DealerTest {
 
     @Test
     public void dealerHasDeck(){
-        assertEquals(52, dealer.getDealerDeck().getDeck().size());
-    }
-
-    @Test//dealer shuffle uses random so difficult to test fully
-    public void dealerShuffleReturnsFullDeck(){
-        assertEquals(52, dealer.shuffle().size());
+        assertEquals(52, dealer.getDealerDeck().getDeckCards().size());
     }
 
     @Test
-    public void dealerCanDealCard(){
-        dealer.deal();
-        assertEquals(51, dealer.getDealerDeck().getDeck().size());
+    public void dealingCardReducesDeckSize(){
+        Card dealtCard = dealer.dealCard();
+        assertFalse(dealer.getDealerDeck().getDeckCards().contains(dealtCard));
+    }
+
+    @Test
+    public void dealingCardRemovesItFromDeck(){
+
+    }
+
+    @Test
+    public void dealCardReturnsCard(){
+//        shuffle gets called so not possible to specify except within range
+        Card dealtCard = dealer.dealCard();
+        assertThat(dealtCard.getSuit(), anyOf(is(Suit.CLUBS), is(Suit.HEARTS), is(Suit.SPADES), is(Suit.DIAMONDS)));
     }
 }
+
+

@@ -1,24 +1,21 @@
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Dealer {
 
-    private Deck deck;
+    private Deck dealerDeck;
 
     public Dealer(){
-        deck = new Deck();
+        this.dealerDeck = new Deck();
     }
-
 
     public Deck getDealerDeck() {
-        return deck;
+        return this.dealerDeck;
     }
 
 
-    public ArrayList<Card> shuffle() {
-        ArrayList<Card> shuffleDeck = deck.getDeck();
-        Collections.shuffle(shuffleDeck);
-        return shuffleDeck;
+    public Card dealCard(){
+        Deck deckInPlay = getDealerDeck();
+        deckInPlay.shuffle();
+        return deckInPlay.getDeckCards().remove(0);
     }
-    //TODO create deal method
+
 }
